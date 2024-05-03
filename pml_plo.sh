@@ -5,5 +5,7 @@
 #SBATCH --mail-user=mwolff3@uwyo.edu
 #SBATCH --time=2-00:00:00
 #SBATCH --partition=teton-gpu
-#SBATCH --mem=32GB
-python3 /home/mwolff3/pml_plo.py > plo_0.txt
+#SBATCH --nodes=1 
+#SBATCH --ntasks-per-node=16
+#SBATCH --mem=256GB
+python3 /home/mwolff3/pml_plo.py > plo_2.txt
