@@ -62,6 +62,7 @@ Add your report and code to this repository. Bonus points if you can set up a
 Github action to automatically run the code and generate the report!
 
 ## References
+https://stackoverflow.com/questions/27264426/arff-files-with-scikit-learn
 https://stackoverflow.com/questions/60786220/attributeerror-gridsearchcv-object-has-no-attribute-best-params
 https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html
 https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
