@@ -43,12 +43,24 @@ data = arff.loadarff('primary-tumor.arff')
 df = pd.DataFrame(data[0])
 print(df.head())
 
-#read and display data
-'''data = pd.read_csv("winequality-red.csv", sep = ";")
-#split into features/target
-x = data.drop(columns = ['quality'])
-y = data['quality']
+print(df.dtypes)
+print(df.columns)
 
+#read and display data
+#data = pd.read_csv("winequality-red.csv", sep = ";")
+#split into features/target
+x = df.drop(columns = ['binaryClass'])
+from sklearn.preprocessing import MultiLabelBinarizer
+y = pd.DataFrame(MultiLabelBinarizer().fit_transform(df['binaryClass']))
+cols = ['sex', 'histologic-type', 'degree-of-diffe', 'bone',
+       'bone-marrow', 'lung', 'pleura', 'peritoneum', 'liver', 'brain', 'skin',
+       'neck', 'supraclavicular', 'axillar', 'mediastinum', 'abdominal']
+new_x = pd.DataFrame(MultiLabelBinarizer().fit_transform(df['age']))
+for col in cols: 
+    bin_col = pd.DataFrame(MultiLabelBinarizer().fit_transform(df[col]))
+    new_x = pd.concat([new_x, bin_col], axis = 1)
+print(new_x.head())
+x = new_x
 #expand search space
 #compare performance of different pipelines
 
@@ -131,7 +143,7 @@ random_forest_param_grid = BayesSearchCV(ensemble.RandomForestClassifier(),
 #construct a pipeline with a scaler, encoder, feature selector, and estimator/classifier
 pipe = Pipeline([
     ('scaler', StandardScaler()),
-    #('onehot', OneHotEncoder()),
+    ('onehot', OneHotEncoder()),
     ('selector', VarianceThreshold()),
     ('estimator', KNeighborsClassifier())
 ])
@@ -144,7 +156,7 @@ grid = GridSearchCV(
     estimator=pipe,
     param_grid={
         "scaler": [StandardScaler(), MinMaxScaler(), Normalizer(), MaxAbsScaler(), "passthrough"],
-        #"onehot": [OneHotEncoder(), "passthrough"],
+        "onehot": [OneHotEncoder(), "passthrough"],
         "selector"  : [VarianceThreshold(), "passthrough"],
         'estimator': [ridge_param_grid, kn_param_grid, dt_param_grid, bagging_param_grid, random_forest_param_grid],
     },
@@ -195,4 +207,4 @@ try:
 
 except: 
     pass
-'''
+#'''
