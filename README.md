@@ -62,6 +62,9 @@ Add your report and code to this repository. Bonus points if you can set up a
 Github action to automatically run the code and generate the report!
 
 ## References
+https://scikit-learn.org/stable/modules/multiclass.html
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
 https://stackoverflow.com/questions/13784192/creating-an-empty-pandas-dataframe-and-then-filling-it
 https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html
