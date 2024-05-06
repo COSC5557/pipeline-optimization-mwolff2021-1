@@ -62,6 +62,14 @@ Add your report and code to this repository. Bonus points if you can set up a
 Github action to automatically run the code and generate the report!
 
 ## References
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
+https://stackoverflow.com/questions/13784192/creating-an-empty-pandas-dataframe-and-then-filling-it
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder
+https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html
+https://datatofish.com/numpy-array-to-pandas-dataframe/
+https://stackoverflow.com/questions/8221922/proper-way-to-exit-command-line-program
+https://stackoverflow.com/questions/40353079/pandas-how-to-check-dtype-for-all-columns-in-a-dataframe
 https://stackoverflow.com/questions/27264426/arff-files-with-scikit-learn
 https://stackoverflow.com/questions/60786220/attributeerror-gridsearchcv-object-has-no-attribute-best-params
 https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html
