@@ -7,7 +7,7 @@
 #SBATCH --partition=teton-gpu
 #SBATCH --nodes=4 
 #SBATCH --ntasks-per-node=16
-#SBATCH --mem=64GB
+#SBATCH --mem=256GB
 module load miniconda3
 conda activate hpo_env
 python3 /home/mwolff3/pml_plo.py > plo_wine_better.txt

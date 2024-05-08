@@ -180,15 +180,18 @@ grid = GridSearchCV(
 cv_results = cross_validate(
         grid, x, y, cv=5, return_estimator=True, scoring = "balanced_accuracy"
     )
-cv_results = pd.DataFrame(cv_results)
-cv_test_scores = cv_results["test_score"]
+cv_results_df = pd.DataFrame(cv_results)
+cv_test_scores = cv_results_df["test_score"]
 #display results
 print(
         "Generalization score with hyperparameters tuning:\n"
         f"{cv_test_scores.mean():.3f} ± {cv_test_scores.std():.3f}"
     )
 #display best hyperparameter configuration
-print("Best Score: ", grid.best_score_)
+max_idx  = cv_results_df['test_score'].idxmax()
+print(cv_results["estimator"][max_idx].best_estimator_)
+print(cv_results["estimator"][max_idx].best_estimator_[2][1].best_estimator_)
+'''print("Best Score: ", grid.best_score_)
 print("Best Params: ", grid.best_params_)
 
 try:
@@ -197,4 +200,4 @@ try:
     print("Best Params: ", grid.param_grid["estimator"].best_params_)
 
 except: 
-    pass
+    pass'''
