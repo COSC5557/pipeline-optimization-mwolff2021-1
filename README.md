@@ -62,6 +62,7 @@ Add your report and code to this repository. Bonus points if you can set up a
 Github action to automatically run the code and generate the report!
 
 ## References
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
 https://stackoverflow.com/questions/34213199/scikit-learn-multilabel-classification-valueerror-you-appear-to-be-using-a-leg
 https://scikit-learn.org/stable/modules/multiclass.html
 https://stackoverflow.com/questions/18172851/deleting-dataframe-row-in-pandas-based-on-column-value
