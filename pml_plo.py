@@ -12,8 +12,9 @@ Original file is located at
 #!pip install pandas
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
-
+#import matplotlib.pyplot as plt
+pd.set_option('display.width', None)
+pd.set_option('max_colwidth', None)
 import sklearn
 from sklearn.feature_selection import VarianceThreshold
 from sklearn.pipeline import Pipeline
@@ -60,8 +61,9 @@ svc_param_grid = BayesSearchCV(SVC(),
          'gamma': Real(1e-6, 1e+1, prior='log-uniform'),
          'degree': Integer(1,8),
          'kernel': Categorical(['linear', 'poly', 'rbf']),
-          },      n_iter=3,
-          n_jobs = 3, 
+          },      n_iter=10,
+          n_jobs = 10, 
+          n_points = 10, 
         random_state=0,
         scoring = "balanced_accuracy"
 )
@@ -82,8 +84,9 @@ ridge_param_grid = BayesSearchCV(RidgeClassifier(),
         'solver' : Categorical(["svd", "cholesky","sparse_cg", 'saga', 'lsqr']),
         'alpha' : Real(0.1, 1.0, prior = 'log-uniform'),
                 },
-        n_iter=3,
-        n_jobs  = 3,
+       n_iter=10,
+          n_jobs = 10, 
+          n_points = 10, 
         random_state=0,
         scoring = "balanced_accuracy"
                                 )
@@ -94,8 +97,9 @@ dt_param_grid = BayesSearchCV(DecisionTreeClassifier(),
         'max_features' : Categorical([None, "auto", "sqrt", "log2"]),
         'min_samples_split':Real(0.1, 1.0, prior = 'log-uniform'),
                 },
-        n_iter=3,
-        n_jobs  = 3,
+        n_iter=10,
+          n_jobs = 10, 
+          n_points = 10, 
         random_state=0,
         scoring = "balanced_accuracy"
                              )
@@ -105,9 +109,9 @@ bagging_param_grid = BayesSearchCV(ensemble.BaggingClassifier(),
     "n_estimators" : Integer(50, 500, prior = 'log-uniform'),
     "max_features" : Real(0.1, 5, prior = 'log-uniform'),
 },
-                                    n_iter=3,
-        random_state=0,
-        n_jobs  = 3,
+                                    n_iter=10,
+          n_jobs = 10, 
+          n_points = 10, random_state = 0,
         scoring = "balanced_accuracy")
 
 random_forest_param_grid = BayesSearchCV(ensemble.RandomForestClassifier(),
@@ -116,8 +120,9 @@ random_forest_param_grid = BayesSearchCV(ensemble.RandomForestClassifier(),
     "max_depth" : Integer(1, 10, prior = "log-uniform"),
 },
 
- n_iter=3,
- n_jobs  = 3,
+n_iter=10,
+          n_jobs = 10, 
+          n_points = 10, 
         random_state=0,
         scoring = "balanced_accuracy"
                              )
@@ -130,7 +135,7 @@ pipe = Pipeline([
 ])
 
 #train/test split
-x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2, random_state=42)
+#x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2, random_state=42)
 
 #define a grid search over different estimators in the pipeline
 grid = GridSearchCV(
@@ -147,24 +152,25 @@ grid = GridSearchCV(
     return_train_score = True
 )
 #fit on training data
-grid.fit(x_train, y_train)
+#grid.fit(x_train, y_train)
 
 #score over test
-print('Training set score: ' + str(grid.score(x_train, y_train)))
-print('Test set score: ' + str(grid.score(x_test, y_test)))
+#print('Training set score: ' + str(grid.score(x_train, y_train)))
+#print('Test set score: ' + str(grid.score(x_test, y_test)))
 #10-fold cv over training set
 cv_results = cross_validate(
-        grid, x_train, y_train, cv=10, return_estimator=True, scoring = "balanced_accuracy"
+        grid, x, y, cv=5, return_estimator=True, scoring = "balanced_accuracy"
     )
-cv_results = pd.DataFrame(cv_results)
-cv_test_scores = cv_results["test_score"]
+cv_results_df = pd.DataFrame(cv_results)
+cv_test_scores = cv_results_df["test_score"]
 #display results
 print(
         "Generalization score with hyperparameters tuning:\n"
         f"{cv_test_scores.mean():.3f} ± {cv_test_scores.std():.3f}"
     )
+print(cv_results_df.loc[cv_results_df['test_score'].idxmax()])
 #display best hyperparameter configuration
-print("Best Score: ", grid.best_score_)
+'''print("Best Score: ", grid.best_score_)
 print("Best Params: ", grid.best_params_)
 
 try:
@@ -175,17 +181,20 @@ try:
     cv_results = cross_validate(
             grid.param_grid["estimator"], x_train, y_train, cv=10, return_estimator=True, scoring = "balanced_accuracy"
         )
-    cv_results = pd.DataFrame(cv_results)
-    cv_test_scores = cv_results["test_score"]
+    cv_results = pd.DataFrame(_df)
+    cv_test_scores = cv_results_df["test_score"]
     #display results
     print(
             "Generalization score with hyperparameters tuning:\n"
             f"{cv_test_scores.mean():.3f} ± {cv_test_scores.std():.3f}"
         )
     #display best hyperparameter configuration
-    print("Best Score: ", grid.param_grid["estimator"].best_score_)
-    print("Best Params: ", grid.param_grid["estimator"].best_params_)
+     print(cv_results_df.loc[cv_results_df['test_score'].idxmax()])
+
+    #print("Best Score: ", grid.param_grid["estimator"].best_score_)
+    #print("Best Params: ", grid.param_grid["estimator"].best_params_)
 
 except: 
     pass
+    '''
 
