@@ -1,3 +1,4 @@
+[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-718a45dd9cf7e7f842a935f5ebbe5719a5e09af4491e668f4dbf3b35d5cca122.svg)](https://classroom.github.com/online_ide?assignment_repo_id=11789044&assignment_repo_type=AssignmentRepo)
 # Pipeline Optimization
 
 For this exercise, we will have a look at Hyperparameter Optimization of ML
@@ -20,43 +21,33 @@ excluding appendices. It should have the following structure:
         algorithms, and other components are you considering and what
         hyperparameters and value ranges, what measures you are using to
         evaluate them, what hyperparameter optimization method you chose, etc.
-- Results: Description of what you observed, including plots. Compare
-  performance before and after tuning, and show the best configuration.
+- Results: Description of what you observed, including plots.
 - Code: Add the code you've used as a separate file.
-
-Your report must contain enough detail to reproduce what you did without the
-code. If in doubt, include more detail.
 
 There is no required format for the report. You could, for example, use an
 iPython notebook.
 
-## Data and Setup
+## Data
 
-Have a look at two different datasets. Ideally, they should have different
-characteristics so that the results of your analysis will be different. You
-could use, for example, the [Wine Quality dataset](https://archive-beta.ics.uci.edu/dataset/186/wine+quality)
-(choose the type of wine of your preference) and the
-[Primary Tumor dataset](https://www.openml.org/search?type=data&sort=runs&id=1003&status=active).
-You may also use datasets of your choice, for example ones that are relevant to
-your research.
+We will have a look at the [Wine Quality
+dataset](https://archive-beta.ics.uci.edu/dataset/186/wine+quality). Choose the
+one that corresponds to your preference in wine. You may also use a dataset of
+your choice, for example one that's relevant to your research.
 
 Choose a small number of different machine learning algorithms and
-hyperparameters, along with sensible value ranges, and additional ML pipeline
-components. This could include, for example, a feature imputation step, a
-feature recoding step, and an ensembling or stacking step in addition to the
-learning algorithm. If those components have hyperparameters, you must choose
-ranges and tune them as well. In addition, your pipeline should allow the
-hyperparameter optimization to turn individual components on and off, e.g. use a
-one-hot-encoding or not. Your hyperparameter search space should be so large
-that you cannot simply run a grid search.
+hyperparameters, along with sensible value ranges, and additional ML pipeline components. This could include, for
+example, a feature imputation step, a feature recoding step, and an ensembling
+or stacking step in addition to the learning algorithm. If those components have
+hyperparameters, you must choose ranges and tune them as well. In addition, your
+pipeline should allow the hyperparameter optimization to turn individual
+components on and off, e.g. use a one-hot-encoding or not.
 
 You can use implementations of AutoML systems (e.g. auto-sklearn), scientific
 papers, or the documentation of the library you are using to determine the
-hyperparameters to tune and the value ranges. Note that there is not only a
-single way to do this, but define a reasonable space (e.g. don't include whether
-to turn on debug output, or random forests with 1,000,000 trees, or tune the
-loss function). Your ML pipeline needs to be reasonably complex, i.e. at least
-three components.
+hyperparameters to tune and the value ranges. Note that there is not only a single way to do this, but define a
+reasonable space (e.g. don't include whether to turn on debug output or random
+forests with 1,000,000 trees). Your ML pipeline needs to be reasonably complex,
+i.e. at least three components.
 
 Determine the best ML pipeline. Make sure to optimize the entire ML pipeline,
 not individual parts individually. Choose a suitable hyperparameter optimizer;
@@ -69,3 +60,73 @@ determination.
 
 Add your report and code to this repository. Bonus points if you can set up a
 Github action to automatically run the code and generate the report!
+
+## References
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OrdinalEncoder.html
+https://stackoverflow.com/questions/34213199/scikit-learn-multilabel-classification-valueerror-you-appear-to-be-using-a-leg
+https://scikit-learn.org/stable/modules/multiclass.html
+https://stackoverflow.com/questions/18172851/deleting-dataframe-row-in-pandas-based-on-column-value
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html
+https://arccwiki.atlassian.net/wiki/spaces/DOCUMENTAT/pages/1778909185/Python+-+Miniconda+-+Conda+-+Pip
+https://docs.conda.io/projects/conda/en/latest/commands/list.html
+https://medium.com/@AIandInsights/hyperparameter-tuning-with-keras-and-gridsearchcv-a-comprehensive-guide-46214cc0d999
+https://stackoverflow.com/questions/46375576/get-the-list-of-packages-installed-in-anaconda
+https://www.activestate.com/resources/quick-reads/how-to-list-installed-python-packages/
+https://stackoverflow.com/questions/54836051/pipeline-ordinalencoder-valueerror-found-unknown-categories
+https://automl.github.io/auto-sklearn/master/manual.html#inspecting-the-results
+https://automl.github.io/auto-sklearn/master/api.html#api
+https://scikit-optimize.github.io/stable/modules/generated/skopt.BayesSearchCV.html
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.filter.html
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.map.html
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.label_binarize.html
+https://stackoverflow.com/questions/20250771/remap-values-in-pandas-column-with-a-dict-preserve-nans
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.TargetEncoder.html#sklearn.preprocessing.TargetEncoder
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.LabelBinarizer.html#sklearn.preprocessing.LabelBinarizer
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.concat.html
+https://stackoverflow.com/questions/13784192/creating-an-empty-pandas-dataframe-and-then-filling-it
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder
+https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html
+https://datatofish.com/numpy-array-to-pandas-dataframe/
+https://stackoverflow.com/questions/8221922/proper-way-to-exit-command-line-program
+https://stackoverflow.com/questions/40353079/pandas-how-to-check-dtype-for-all-columns-in-a-dataframe
+https://stackoverflow.com/questions/27264426/arff-files-with-scikit-learn
+https://stackoverflow.com/questions/60786220/attributeerror-gridsearchcv-object-has-no-attribute-best-params
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html
+https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html
+https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+https://scikit-learn.org/stable/modules/preprocessing.html
+https://www.geeksforgeeks.org/quick-guide-to-exploratory-data-analysis-using-jupyter-notebook/
+https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html
+https://scikit-learn.org/stable/auto_examples/compose/plot_digits_pipe.html#sphx-glr-auto-examples-compose-plot-digits-pipe-py
+https://scikit-learn.org/stable/auto_examples/compose/plot_compare_reduction.html#sphx-glr-auto-examples-compose-plot-compare-reduction-py
+https://machinelearningmastery.com/modeling-pipeline-optimization-with-scikit-learn/
+https://machinelearningmastery.com/modeling-pipeline-optimization-with-scikit-learn/
+https://medium.com/mlearning-ai/how-to-use-sklearns-pipelines-to-optimize-your-analysis-b6cd91999be
+https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.make_pipeline.html
+https://scikit-learn.org/stable/modules/grid_search.
+https://scikit-learn.org/stable/modules/compose.html#pipeline
+https://medium.com/@kocur4d/hyper-parameter-tuning-with-pipelines-5310aff069d6
+https://towardsdatascience.com/getting-the-most-out-of-scikit-learn-pipelines-c2afc4410f1a
+https://stackoverflow.com/questions/69035959/passthrough-all-columns-in-sklearn-pipeline
+https://machinelearningmastery.com/grid-search-hyperparameters-deep-learning-models-python-keras/
+https://stackoverflow.com/questions/43366561/use-sklearns-gridsearchcv-with-a-pipeline-preprocessing-just-once
+https://stackoverflow.com/questions/37021338/gridsearch-in-pipeline?rq=3
+https://stackoverflow.com/questions/62331674/sklearn-combine-gridsearchcv-with-column-transform-and-pipeline?rq=3
+https://stackoverflow.com/questions/21050110/sklearn-gridsearchcv-with-pipeline?rq=3
+https://stackoverflow.com/questions/23045318/grid-search-over-multiple-classifiers
+https://hyperopt.github.io/hyperopt/
+https://stackoverflow.com/questions/51629153/more-than-one-estimator-in-gridsearchcvsklearn/51629917#51629917
+https://www.davidsbatista.net/blog/2018/02/23/model_optimization/
+https://stackoverflow.com/questions/51629153/more-than-one-estimator-in-gridsearchcvsklearn?noredirect=1&lq=1
+https://stackoverflow.com/questions/65189909/grid-search-preprocess-multiple-hyperparameters-and-multiple-estimators?rq=3
+https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsClassifier.html
+https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.RidgeClassifier.html
+https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html
+
+
+
+
