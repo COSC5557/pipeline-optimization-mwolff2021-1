@@ -64,6 +64,18 @@ Github action to automatically run the code and generate the report!
 ## References
 https://stackoverflow.com/questions/34213199/scikit-learn-multilabel-classification-valueerror-you-appear-to-be-using-a-leg
 https://scikit-learn.org/stable/modules/multiclass.html
+https://stackoverflow.com/questions/18172851/deleting-dataframe-row-in-pandas-based-on-column-value
+https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.info.html
+https://arccwiki.atlassian.net/wiki/spaces/DOCUMENTAT/pages/1778909185/Python+-+Miniconda+-+Conda+-+Pip
+https://docs.conda.io/projects/conda/en/latest/commands/list.html
+https://medium.com/@AIandInsights/hyperparameter-tuning-with-keras-and-gridsearchcv-a-comprehensive-guide-46214cc0d999
+https://stackoverflow.com/questions/46375576/get-the-list-of-packages-installed-in-anaconda
+https://www.activestate.com/resources/quick-reads/how-to-list-installed-python-packages/
+https://stackoverflow.com/questions/54836051/pipeline-ordinalencoder-valueerror-found-unknown-categories
+https://automl.github.io/auto-sklearn/master/manual.html#inspecting-the-results
+https://automl.github.io/auto-sklearn/master/api.html#api
+https://scikit-optimize.github.io/stable/modules/generated/skopt.BayesSearchCV.html
+https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.cross_validate.html
 https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MultiLabelBinarizer.html
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.filter.html
 https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.map.html
