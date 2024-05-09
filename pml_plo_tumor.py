@@ -145,6 +145,14 @@ random_forest_param_grid = BayesSearchCV(ensemble.RandomForestClassifier(),
         random_state=0,
         scoring = "balanced_accuracy"
                              )
+                             
+
+
+
+vt_param_grid = BayesSearchCV(VarianceThreshold(), 
+{"threshold" : Real(0.0, 10)}, 
+    n_iter = 3, random_state = 0
+)
 #construct a pipeline with a scaler, encoder, feature selector, and estimator/classifier
 pipe = Pipeline([
     #('scaler', StandardScaler()),
@@ -153,16 +161,13 @@ pipe = Pipeline([
     ('estimator', KNeighborsClassifier())
 ])
 
-#train/test split
-#x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(x, y, test_size=0.2, random_state=42)
-
 #define a grid search over different estimators in the pipeline
 grid = GridSearchCV(
     estimator=pipe,
     param_grid={
         #"scaler": [StandardScaler(), MinMaxScaler(), Normalizer(), MaxAbsScaler(), "passthrough"],
-        'encoder': [OneHotEncoder(handle_unknown = 'ignore'), OrdinalEncoder(handle_unknown ='ignore')],
-        'selector'  : [VarianceThreshold(), "passthrough"],
+        'encoder': [OneHotEncoder(), OrdinalEncoder()],
+        'selector'  : [vt_param_grid, "passthrough"],
         'estimator': [ridge_param_grid, kn_param_grid, dt_param_grid, bagging_param_grid, random_forest_param_grid],
     },
     n_jobs = -1,
@@ -170,15 +175,9 @@ grid = GridSearchCV(
     cv = 3,
     return_train_score = True
 )
-#fit on training data
-#grid.fit(x, y_train)
 
-#score over test
-#print('Training set score: ' + str(grid.score(x_train, y_train)))
-#print('Test set score: ' + str(grid.score(x_test, y_test)))
-#10-fold cv over training set
 cv_results = cross_validate(
-        grid, x, y, cv=5, return_estimator=True, scoring = "balanced_accuracy"
+        grid, x, y, cv=5, return_estimator=True, scoring = "balanced_accuracy", n_jobs = -1
     )
 cv_results_df = pd.DataFrame(cv_results)
 cv_test_scores = cv_results_df["test_score"]
@@ -190,14 +189,7 @@ print(
 #display best hyperparameter configuration
 max_idx  = cv_results_df['test_score'].idxmax()
 print(cv_results["estimator"][max_idx].best_estimator_)
-print(cv_results["estimator"][max_idx].best_estimator_[2][1].best_estimator_)
-'''print("Best Score: ", grid.best_score_)
-print("Best Params: ", grid.best_params_)
-
-try:
-    #display best hyperparameter configuration
-    print("Best Score: ", grid.param_grid["estimator"].best_score_)
-    print("Best Params: ", grid.param_grid["estimator"].best_params_)
-
-except: 
-    pass'''
+print(cv_results["encoder"][max_idx].best_estimator_.best_estimator_)
+print(cv_results["selector"][max_idx].best_estimator_.best_estimator_)
+print(cv_results["estimator"][max_idx].best_estimator_.best_estimator_)
+print(cv_results["estimator"][max_idx].best_estimator_.best_estimator_.best_estimator)

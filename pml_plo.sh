@@ -3,7 +3,7 @@
 ##SBATCH --job-name pml_plo_wine
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=mwolff3@uwyo.edu
-#SBATCH --time=6:00:00
+#SBATCH --time=10:00:00
 #SBATCH --partition=teton-gpu
 #SBATCH --nodes=4 
 #SBATCH --ntasks-per-node=16
